@@ -1,0 +1,115 @@
+class Game {
+
+public:
+    Game() : health(INITIAL_HEALTH), hasMapPiece1(false), hasMapPiece2(false), hasGun(false), bossHealth(BOSS_HEALTH) {
+        srand(static_cast<unsigned>(time(0)));
+    }
+
+    void start() {
+        while (health > 0) {
+            lobby();
+        }
+        cout << "Game Over. You died.\n";
+
+    }
+
+private:
+    int health;
+    bool hasMapPiece1;
+    bool hasMapPiece2;
+    bool hasGun;
+    int bossHealth;
+
+    void lobby() {
+        cout << "You are in the lobby. Choose a cave to enter (1, 2, 3) or return to the lobby (4): ";
+        int choice;
+        cin >> choice;
+        switch (choice) {
+        case 1: cave1(); break;
+        case 2: cave2(); break;
+        case 3: cave3(); break;
+        case 4: cout << "Returning to lobby.\n"; break;
+        default: cout << "Invalid choice. Try again.\n"; break;
+        }
+    }
+
+    void cave1() {
+        cout << "You enter Cave 1.\n";
+        int damage = rand() % 3 + 1; // Random damage between 1 and 3
+        health -= damage;
+        cout << "You took " << damage << " damage. Health: " << health << "\n";
+        if (health > 0) {
+            hasMapPiece1 = true;
+            cout << "You found the first half of the map.\n";
+            cout << "Returning to lobby.\n";
+        }
+    }
+
+    void cave2() {
+        cout << "You enter Cave 2.\n";
+        int item = rand() % 2; // 0 for health item, 1 for weapon
+        if (item == 0) {
+            health = INITIAL_HEALTH;
+            cout << "You found a health item. Health restored to " << health << ".\n";
+        }
+        else {
+            int weapon = rand() % 2; // 0 for knife, 1 for gun
+            if (weapon == 0) {
+                cout << "You found a knife.\n";
+            }
+            else {
+                hasGun = true;
+                cout << "You found a gun.\n";
+            }
+        }
+        int damage = rand() % 5 + 1; // Random damage between 1 and 5
+        health -= damage;
+        cout << "You took " << damage << " damage. Health: " << health << "\n";
+        if (health > 0) {
+            cout << "Returning to lobby.\n";
+        }
+    }
+
+    void cave3() {
+        cout << "You enter Cave 3. Boss fight!\n";
+        if (hasGun) {
+            while (bossHealth > 0 && health > 0) {
+                int hit = rand() % 10; // 90% chance to hit
+                if (hit < 9) {
+                    bossHealth -= 3;
+                    cout << "You hit the boss! Boss health: " << bossHealth << "\n";
+                }
+                else {
+                    cout << "You missed!\n";
+                }
+                if (bossHealth > 0) {
+                    int damage = rand() % 3 + 2; // Boss does random damage between 2 and 4
+                    health -= damage;
+                    cout << "The boss hit you! Your health: " << health << "\n";
+                }
+            }
+            if (health > 0) {
+                cout << "You defeated the boss!\n";
+                hasMapPiece2 = true;
+                if (hasMapPiece1) {
+                    cout << "You have both pieces of the map. You win!\n";
+                }
+                else {
+                    cout << "You found the second half of the map.\n";
+                    cout << "Returning to lobby.\n";
+                }
+            }
+        }
+        else {
+            cout << "You don't have a gun! The boss defeats you.\n";
+            health = 0;
+        }
+    }
+}; */
+
+int main() {
+    Game game;
+    game.start();
+    return 0;
+}
+
