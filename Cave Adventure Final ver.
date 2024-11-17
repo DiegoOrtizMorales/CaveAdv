@@ -22,7 +22,7 @@ private:
 
     // Handles the boss fight in Cave 3
     void bossFight() {
-        cout << "You enter Cave 3. Boss fight!" << endl;
+        cout << "You enter the third Cave. Boss fight!" << endl;
 
         // If the player has a gun, they can fight the boss
         if (hasGun) {
@@ -50,12 +50,12 @@ private:
                 if (hasMapPiece1) {
                     cout << "You win!" << endl;
                 } else {
-                    cout << "You found the second map piece." << endl;
+                    cout << "You found the second map piece, Good Job!." << endl;
                 }
             }
         } else {
             // If the player doesn't have a gun, they lose
-            cout << "You don't have a gun! The boss defeats you." << endl;
+            cout << "You don't have a gun! The boss kills you!!." << endl;
             health = 0;
         }
     }
@@ -121,7 +121,7 @@ public:
         if (health <= 0) {
             cout << "Game Over! You have been defeated." << endl;
         } else {
-            cout << "Congratulations! You won the game." << endl;
+            cout << "Congratulations! You won!!" << endl;
         }
     }
 
