@@ -1,4 +1,4 @@
-## Cave Adventure is a text based adventure game where you explore three caves in an attempts to escape.
+## Cave Adventure is a text based adventure game where you explore three caves.
 
 How to Build
 1. Clone the repository.
