@@ -1,3 +1,6 @@
+//Structure made by Sara Maldonado Mogica
+//Gameplay made by Diego Ortiz Morales
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
